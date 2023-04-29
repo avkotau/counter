@@ -1,7 +1,8 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import './App.css';
 import FirstCounter from "./FIrstCounter/FirstCounter";
 import SecondCounter from "./SecondCounter/SecondCounter";
+import { json } from "stream/consumers";
 
 function App(): JSX.Element {
 
@@ -22,13 +23,27 @@ function App(): JSX.Element {
         setCountStart(Number(e.currentTarget.value))
     }
 
+
     const increaseCount = () => {
         setCount(count += 1)
+
     }
 
     const resetCount = () => {
         setCount(0)
     }
+
+    useEffect(() => {
+        let getLocalString = localStorage.getItem('countValue')
+        if (getLocalString) {
+            let newCountValue = JSON.parse(getLocalString)
+            setCount(newCountValue)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('countValue', JSON.stringify(count))
+    }, [count])
 
     return (
         <div className="App">

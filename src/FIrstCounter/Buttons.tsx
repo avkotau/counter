@@ -19,7 +19,7 @@ const Buttons: React.FC<IncreaseButtonPropsType> = (
     }
 
 ) => {
-    debugger
+
     return (
         <div className={styles.buttonsContainer}>
             <button disabled={count === countMax && countStart > 0} onClick={increaseCount}><div className={styles.fontButton}>inc</div></button>
