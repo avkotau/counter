@@ -18,7 +18,7 @@ const Display: React.FC<PropsType> = (
 
     return (
         <div className={styles.displayContainer}>
-            <div className={count === countMax && countStart > 0 ? styles.redText : ''}>{count}</div>
+            <div className={count === countMax && countStart > 0 ? styles.redText : styles.dispText}>{count}</div>
         </div>
     );
 };

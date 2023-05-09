@@ -1,25 +1,37 @@
 .displayContainer {
-    border: 3px solid cornflowerblue;
+    border: 3px solid mediumturquoise;
     border-radius: 5px;
-    background-color: cornflowerblue;
     height: 150px;
 
     display: grid;
     justify-content: center;
     align-content: center;
     grid-template: 1fr/ 1fr;
+    margin-bottom: 10px;
+    padding: 30px;
 }
+
 .redText {
     font-size: 50px;
-    color:red;
+    color: red;
+}
+
+.dispText {
+    color: mediumturquoise;
+    font-size: 30px;
 }
 
 .inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
 }
 
 .input {
     padding: 10px;
     border-radius: 5px;
+    text-align: center;
 }
+
 

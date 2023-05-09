@@ -1,8 +1,8 @@
 .counterContainer {
-    border: 3px solid cornflowerblue;
+    border: 3px solid mediumturquoise;
     border-radius: 5px;
     padding: 10px;
-    width: 60%;
+    width: 30%;
     height: 70%;
 
     display: grid;

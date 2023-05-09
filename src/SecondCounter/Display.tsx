@@ -25,11 +25,11 @@ const Display: React.FC<PropsType> = (
     return (
         <div className={styles.displayContainer}>
             <div className={styles.inputContainer}>
-                max value:
+                <span className={styles.dispText}>max value:</span>
                 <input type="number" onChange={changeCountMax} value={countMax}  className={styles.input}/>
             </div>
             <div className={styles.inputContainer}>
-                start value:
+                <span className={styles.dispText}>start value:</span>
                 <input type="number" onChange={changeCountStart} value={countStart} className={styles.input}/>
             </div>
         </div>

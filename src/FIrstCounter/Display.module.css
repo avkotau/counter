@@ -1,16 +1,21 @@
 .displayContainer {
-    border: 3px solid cornflowerblue;
+    border: 3px solid mediumturquoise;
     border-radius: 5px;
-    background-color: cornflowerblue;
+    /*background-color: mediumturquoise;*/
     height: 150px;
 
     display: grid;
     justify-content: center;
     align-content: center;
-
+    margin-bottom: 10px;
 }
+
 .redText {
     font-size: 50px;
-    color:red;
+    color: red;
+}
+
+.dispText {
+    color: mediumturquoise;
 }
 

@@ -19,14 +19,13 @@ function App(): JSX.Element {
     const changeCountMax = (e: ChangeEvent<HTMLInputElement>) => {
         setCountMax(Number(e.currentTarget.value))
     }
+
     const changeCountStart = (e: ChangeEvent<HTMLInputElement>) => {
         setCountStart(Number(e.currentTarget.value))
     }
 
-
     const increaseCount = () => {
         setCount(count += 1)
-
     }
 
     const resetCount = () => {
@@ -35,9 +34,11 @@ function App(): JSX.Element {
 
     useEffect(() => {
         let getLocalString = localStorage.getItem('countValue')
+
         if (getLocalString) {
             let newCountValue = JSON.parse(getLocalString)
             setCount(newCountValue)
+
         }
     }, [])
 

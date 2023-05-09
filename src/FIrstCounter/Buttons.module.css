@@ -1,8 +1,10 @@
 .buttonsContainer {
-    border: 3px solid cornflowerblue;
+    border: 3px solid mediumturquoise;
     border-radius: 5px;
     height: 100px;
     display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .fontButton {
@@ -13,4 +15,8 @@
 
 button {
     grid-row: 1;
+    width: 50%;
+    height: 50%;
+    background: mediumturquoise;
+    border-radius: 5px;
 }
