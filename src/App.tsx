@@ -15,7 +15,7 @@ function App(): JSX.Element {
         // if (countStart)
         setCount(countStart)
     }
-    console.log('countMax',countMax,'countStart',countStart)
+    console.log('countMax', countMax, 'countStart', countStart)
     const changeCountMax = (e: ChangeEvent<HTMLInputElement>) => {
         setCountMax(Number(e.currentTarget.value))
     }
@@ -33,18 +33,25 @@ function App(): JSX.Element {
     }
 
     useEffect(() => {
-        let getLocalString = localStorage.getItem('countValue')
+        let getLocalStartCount = localStorage.getItem('countStart')
+        let getLocalMaxCount = localStorage.getItem('countMax')
 
-        if (getLocalString) {
-            let newCountValue = JSON.parse(getLocalString)
-            setCount(newCountValue)
-
+        if (getLocalStartCount) {
+            let newCountValue = JSON.parse(getLocalStartCount)
+            setCountStart(newCountValue)
         }
+
+        if (getLocalMaxCount) {
+            let newCountValue = JSON.parse(getLocalMaxCount)
+            setCountMax(newCountValue)
+        }
+
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('countValue', JSON.stringify(count))
-    }, [count])
+        localStorage.setItem('countStart', JSON.stringify(countStart))
+        localStorage.setItem('countMax', JSON.stringify(countMax))
+    }, [countStart, countStart])
 
     return (
         <div className="App">
