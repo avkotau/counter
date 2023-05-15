@@ -15,7 +15,7 @@ function App(): JSX.Element {
         // if (countStart)
         setCount(countStart)
     }
-
+    console.log('countMax',countMax,'countStart',countStart)
     const changeCountMax = (e: ChangeEvent<HTMLInputElement>) => {
         setCountMax(Number(e.currentTarget.value))
     }
@@ -29,7 +29,7 @@ function App(): JSX.Element {
     }
 
     const resetCount = () => {
-        setCount(0)
+        setCount(countStart)
     }
 
     useEffect(() => {

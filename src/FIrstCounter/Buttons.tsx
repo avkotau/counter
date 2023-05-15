@@ -17,13 +17,29 @@ const Buttons: React.FC<IncreaseButtonPropsType> = (
         countMax,
         countStart,
     }
-
 ) => {
 
     return (
         <div className={styles.buttonsContainer}>
-            <button disabled={count === countMax && countStart > 0} onClick={increaseCount}><div className={styles.fontButton}>inc</div></button>
-            <button disabled={count === countStart} onClick={resetCount}><div className={styles.fontButton}>reset</div></button>
+            <button
+                disabled={
+                    count === countMax
+                    || countMax < 0
+                    || countStart < 0
+                    || countStart > countMax
+                    || countMax === countStart
+                }
+                onClick={increaseCount}>
+                <div className={styles.fontButton}>inc</div>
+            </button>
+            <button disabled={
+                count === countStart
+                || countMax < 0 || countStart < 0
+                || countMax === countStart
+            }
+                    onClick={resetCount}>
+                <div className={styles.fontButton}>reset</div>
+            </button>
         </div>
     );
 };

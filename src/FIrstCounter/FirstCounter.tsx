@@ -23,7 +23,11 @@ const FirstCounter: React.FC<PropsType> = (
 
     return (
         <div className={styles.counterContainer}>
-            <Display countMax={countMax} count={count} countStart={countStart}/>
+            <Display
+                countMax={countMax}
+                count={count}
+                countStart={countStart}
+            />
             <Buttons
                 count={count}
                 countMax={countMax}

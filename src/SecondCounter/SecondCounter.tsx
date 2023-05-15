@@ -28,13 +28,15 @@ const SecondCounter: React.FC<CountType> = (
     return (
         <div className={styles.counterContainer}>
             <Display
+                count={count}
                 changeCountMax={changeCountMax}
                 changeCountStart={changeCountStart}
-                countMax={countMax} count={count}
+                countMax={countMax}
                 countStart={countStart}
             />
             <Buttons
-                count={count}
+                countMax={countMax}
+                countStart={countStart}
                 setValue={setValue}
             />
         </div>
