@@ -1,7 +1,6 @@
 .displayContainer {
     border: 3px solid mediumturquoise;
     border-radius: 5px;
-    /*background-color: mediumturquoise;*/
     height: 150px;
 
     display: grid;

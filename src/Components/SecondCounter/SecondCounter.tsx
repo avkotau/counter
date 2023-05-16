@@ -1,44 +1,49 @@
 import React, { ChangeEvent, useState } from 'react';
-import styles from './Counter.module.css'
+import stylesContainer from '../../CommonStyles.module.css';
+import stylesBtn from '../../CommonStyles.module.css'
 import Display from "./Display";
-import Buttons from "./Buttons";
+import Button from "../Button/Button";
 
 export type CountType = {
-    count: number
     setValue: () => void
     changeCountMax: (e: ChangeEvent<HTMLInputElement>) => void
     changeCountStart: (e: ChangeEvent<HTMLInputElement>) => void
     countMax: number
     countStart: number
-
 }
 
 const SecondCounter: React.FC<CountType> = (
     {
-        count,
         setValue,
         changeCountMax,
         changeCountStart,
         countMax,
-        countStart
+        countStart,
     }
 ) => {
 
 
     return (
-        <div className={styles.counterContainer}>
+        <div className={stylesContainer.container}>
+
             <Display
-                count={count}
                 changeCountMax={changeCountMax}
                 changeCountStart={changeCountStart}
                 countMax={countMax}
                 countStart={countStart}
             />
-            <Buttons
-                countMax={countMax}
-                countStart={countStart}
-                setValue={setValue}
-            />
+            <div className={stylesBtn.btnsContainer}>
+
+                <Button
+                    disabled={
+                        countMax < 0
+                        || countStart < 0
+                        || countMax <= countStart
+                    }
+                    setValue={setValue}
+                >set</Button>
+            </div>
+
         </div>
     );
 };

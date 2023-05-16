@@ -1,8 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import './App.css';
-import FirstCounter from "./FIrstCounter/FirstCounter";
-import SecondCounter from "./SecondCounter/SecondCounter";
-import { json } from "stream/consumers";
+import FirstCounter from "./Components/FIrstCounter/FirstCounter";
+import SecondCounter from "./Components/SecondCounter/SecondCounter";
 
 function App(): JSX.Element {
 
@@ -12,10 +11,9 @@ function App(): JSX.Element {
 
     const setValue = () => {
         setCountMax(countMax)
-        // if (countStart)
         setCount(countStart)
     }
-    console.log('countMax', countMax, 'countStart', countStart)
+
     const changeCountMax = (e: ChangeEvent<HTMLInputElement>) => {
         setCountMax(Number(e.currentTarget.value))
     }
@@ -51,7 +49,8 @@ function App(): JSX.Element {
     useEffect(() => {
         localStorage.setItem('countStart', JSON.stringify(countStart))
         localStorage.setItem('countMax', JSON.stringify(countMax))
-    }, [countStart, countStart])
+    }, [countStart, countMax])
+
 
     return (
         <div className="App">
@@ -61,14 +60,12 @@ function App(): JSX.Element {
                 increaseCount={increaseCount}
                 resetCount={resetCount}
                 countStart={countStart}
-
             />
             <SecondCounter
                 setValue={setValue}
                 changeCountMax={changeCountMax}
                 changeCountStart={changeCountStart}
                 countStart={countStart}
-                count={count}
                 countMax={countMax}
             />
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './Counter.module.css'
+import stylesContainer from '../../CommonStyles.module.css'
 import Display from "./Display";
-import Buttons from "./Buttons";
+import Buttons from "../SecondCounter/Buttons/Buttons";
 
 export type PropsType = {
     count: number
@@ -22,7 +22,7 @@ const FirstCounter: React.FC<PropsType> = (
 ) => {
 
     return (
-        <div className={styles.counterContainer}>
+        <div className={stylesContainer.container}>
             <Display
                 countMax={countMax}
                 count={count}
