@@ -30,6 +30,7 @@ const Display: React.FC<PropsType> = (
                                ? styles.input
                                : styles.input + ' ' + styles.inputError}/>
             </div>
+
             <div className={styles.inputContainer}>
                 <span className={styles.dispText}>start value:</span>
                 <input type="number"
