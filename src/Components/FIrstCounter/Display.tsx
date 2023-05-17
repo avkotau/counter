@@ -15,11 +15,12 @@ const Display: React.FC<PropsType> = (
         countStart
     }
 ) => {
-
+    console.log('countStart, countMax', countStart, countMax)
+    // console.log(' countMax < 0 || countStart < 0 || countMax <= countStart',  countMax < 0, countStart < 0, countMax <= countStart)
     return (
         <div className={styles.displayContainer}>
             {
-                countMax < 0 || countStart < 0 || countMax <= countStart
+                countMax < 0 || countStart < 0 || (countMax <= countStart)
                     ? <div className={styles.redText}>Incorrect value!</div>
                     : <div className={
                         count === countMax && countStart >= 0

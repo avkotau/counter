@@ -5,9 +5,12 @@ import SecondCounter from "./Components/SecondCounter/SecondCounter";
 
 function App(): JSX.Element {
 
-    let [count, setCount] = useState<number>(0);
-    let [countMax, setCountMax] = useState<number>(0);
-    let [countStart, setCountStart] = useState<number>(0);
+    let getLocalStartCount = localStorage.getItem('countStart')
+    let getLocalMaxCount = localStorage.getItem('countMax')
+
+    let [count, setCount] = useState<number>(getLocalStartCount ? JSON.parse(getLocalStartCount) : 0);
+    let [countStart, setCountStart] = useState<number>(getLocalStartCount ? JSON.parse(getLocalStartCount) : 0);
+    let [countMax, setCountMax] = useState<number>(getLocalMaxCount ? JSON.parse(getLocalMaxCount) : 0);
 
     const setValue = () => {
         setCountMax(countMax)
@@ -30,21 +33,21 @@ function App(): JSX.Element {
         setCount(countStart)
     }
 
-    useEffect(() => {
-        let getLocalStartCount = localStorage.getItem('countStart')
-        let getLocalMaxCount = localStorage.getItem('countMax')
-
-        if (getLocalStartCount) {
-            let newCountValue = JSON.parse(getLocalStartCount)
-            setCountStart(newCountValue)
-        }
-
-        if (getLocalMaxCount) {
-            let newCountValue = JSON.parse(getLocalMaxCount)
-            setCountMax(newCountValue)
-        }
-
-    }, [])
+    // useLayoutEffect(() => {
+    //     let getLocalStartCount = localStorage.getItem('countStart')
+    //     let getLocalMaxCount = localStorage.getItem('countMax')
+    //
+    //     if (getLocalStartCount) {
+    //         let newCountValue = JSON.parse(getLocalStartCount)
+    //         setCountStart(newCountValue)
+    //     }
+    //
+    //     if (getLocalMaxCount) {
+    //         let newCountValue = JSON.parse(getLocalMaxCount)
+    //         setCountMax(newCountValue)
+    //     }
+    //
+    // }, [])
 
     useEffect(() => {
         localStorage.setItem('countStart', JSON.stringify(countStart))
