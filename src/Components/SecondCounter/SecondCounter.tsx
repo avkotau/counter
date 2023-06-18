@@ -10,6 +10,8 @@ export type CountType = {
     changeCountStart: (e: ChangeEvent<HTMLInputElement>) => void
     countMax: number
     countStart: number
+    handleFocus: () => void
+    handleBlur: () => void
 }
 
 const SecondCounter: React.FC<CountType> = (
@@ -19,6 +21,8 @@ const SecondCounter: React.FC<CountType> = (
         changeCountStart,
         countMax,
         countStart,
+        handleFocus,
+        handleBlur
     }
 ) => {
 
@@ -31,6 +35,8 @@ const SecondCounter: React.FC<CountType> = (
                 changeCountStart={changeCountStart}
                 countMax={countMax}
                 countStart={countStart}
+                handleFocus={handleFocus}
+                handleBlur={handleBlur}
             />
             <div className={stylesBtn.btnsContainer}>
 

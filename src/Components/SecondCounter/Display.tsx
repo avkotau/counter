@@ -6,6 +6,8 @@ type PropsType = {
     changeCountStart: (e: ChangeEvent<HTMLInputElement>) => void
     countMax: number
     countStart: number
+    handleFocus: () => void
+    handleBlur: () => void
 
 }
 
@@ -14,7 +16,9 @@ const Display: React.FC<PropsType> = (
         changeCountMax,
         changeCountStart,
         countMax,
-        countStart
+        countStart,
+        handleFocus,
+        handleBlur
     }
 ) => {
 
@@ -28,7 +32,10 @@ const Display: React.FC<PropsType> = (
                        className={
                            (countMax >= 0 && countMax > countStart)
                                ? styles.input
-                               : styles.input + ' ' + styles.inputError}/>
+                               : styles.input + ' ' + styles.inputError}
+                       onFocus={handleFocus}
+                       onBlur={handleBlur}
+                />
             </div>
 
             <div className={styles.inputContainer}>
@@ -39,7 +46,10 @@ const Display: React.FC<PropsType> = (
                        className={
                            (countStart >= 0 && countStart < countMax)
                                ? styles.input
-                               : styles.input + ' ' + styles.inputError}/>
+                               : styles.input + ' ' + styles.inputError}
+                       onFocus={handleFocus}
+                       onBlur={handleBlur}
+                />
             </div>
         </div>
     );

@@ -9,6 +9,7 @@ export type PropsType = {
     increaseCount: () => void
     resetCount: () => void
     countStart: number
+    messageFocus: string
 }
 
 const FirstCounter: React.FC<PropsType> = (
@@ -18,6 +19,7 @@ const FirstCounter: React.FC<PropsType> = (
         increaseCount,
         resetCount,
         countStart,
+        messageFocus
     }
 ) => {
 
@@ -27,6 +29,7 @@ const FirstCounter: React.FC<PropsType> = (
                 countMax={countMax}
                 count={count}
                 countStart={countStart}
+                messageFocus={messageFocus}
             />
             <Buttons
                 count={count}

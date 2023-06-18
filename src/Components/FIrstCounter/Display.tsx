@@ -6,16 +6,19 @@ type PropsType = {
     count: number
     countMax: number
     countStart: number
+    messageFocus: string
 }
 
 const Display: React.FC<PropsType> = (
     {
         count,
         countMax,
-        countStart
+        countStart,
+        messageFocus
     }
 ) => {
     console.log('countStart, countMax', countStart, countMax)
+    console.log('handleFocus', messageFocus)
     // console.log(' countMax < 0 || countStart < 0 || countMax <= countStart',  countMax < 0, countStart < 0, countMax <= countStart)
     return (
         <div className={styles.displayContainer}>
@@ -25,7 +28,9 @@ const Display: React.FC<PropsType> = (
                     : <div className={
                         count === countMax && countStart >= 0
                             ? styles.redText
-                            : styles.dispText}>{count}</div>
+                            : styles.dispText}>{!!messageFocus
+                        ? messageFocus
+                        : count}</div>
             }
 
         </div>

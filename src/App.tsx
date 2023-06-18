@@ -11,6 +11,7 @@ function App(): JSX.Element {
     let [count, setCount] = useState<number>(getLocalStartCount ? JSON.parse(getLocalStartCount) : 0);
     let [countStart, setCountStart] = useState<number>(getLocalStartCount ? JSON.parse(getLocalStartCount) : 0);
     let [countMax, setCountMax] = useState<number>(getLocalMaxCount ? JSON.parse(getLocalMaxCount) : 0);
+    let [messageFocus, setMessageFocus] = useState<string>('');
 
     const setValue = () => {
         setCountMax(countMax)
@@ -33,21 +34,16 @@ function App(): JSX.Element {
         setCount(countStart)
     }
 
-    // useLayoutEffect(() => {
-    //     let getLocalStartCount = localStorage.getItem('countStart')
-    //     let getLocalMaxCount = localStorage.getItem('countMax')
-    //
-    //     if (getLocalStartCount) {
-    //         let newCountValue = JSON.parse(getLocalStartCount)
-    //         setCountStart(newCountValue)
-    //     }
-    //
-    //     if (getLocalMaxCount) {
-    //         let newCountValue = JSON.parse(getLocalMaxCount)
-    //         setCountMax(newCountValue)
-    //     }
-    //
-    // }, [])
+    const handleFocus = () => {
+
+        setMessageFocus("enter values and press 'set'")
+    }
+
+    const handleBlur = () => {
+        setMessageFocus('')
+    }
+
+
 
     useEffect(() => {
         localStorage.setItem('countStart', JSON.stringify(countStart))
@@ -63,6 +59,7 @@ function App(): JSX.Element {
                 increaseCount={increaseCount}
                 resetCount={resetCount}
                 countStart={countStart}
+                messageFocus={messageFocus}
             />
             <SecondCounter
                 setValue={setValue}
@@ -70,6 +67,8 @@ function App(): JSX.Element {
                 changeCountStart={changeCountStart}
                 countStart={countStart}
                 countMax={countMax}
+                handleFocus={handleFocus}
+                handleBlur={handleBlur}
             />
         </div>
     );
