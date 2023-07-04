@@ -1,54 +1,62 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import './App.css';
 import FirstCounter from "./Components/FIrstCounter/FirstCounter";
 import SecondCounter from "./Components/SecondCounter/SecondCounter";
+import { useDispatch, useSelector } from "react-redux";
+import { setCount, setCountMax, setCountStart, setMessageFocus } from "./store/reduser";
 
 function App(): JSX.Element {
 
-    let getLocalStartCount = localStorage.getItem('countStart')
-    let getLocalMaxCount = localStorage.getItem('countMax')
+    const dispatch = useDispatch();
+    let count = useSelector((state: {count: number} )=> state.count);
+    const countStart = useSelector((state: {countStart: number} )=> state.countStart);
+    const countMax = useSelector((state: {countMax: number} )=> state.countMax);
+    const messageFocus = useSelector((state: {messageFocus: string} )=> state.messageFocus);
 
-    let [count, setCount] = useState<number>(getLocalStartCount ? JSON.parse(getLocalStartCount) : 0);
-    let [countStart, setCountStart] = useState<number>(getLocalStartCount ? JSON.parse(getLocalStartCount) : 0);
-    let [countMax, setCountMax] = useState<number>(getLocalMaxCount ? JSON.parse(getLocalMaxCount) : 0);
-    let [messageFocus, setMessageFocus] = useState<string>('');
 
     const setValue = () => {
-        setCountMax(countMax)
-        setCount(countStart)
+        dispatch(setCountMax(countMax))
+        dispatch(setCount(count))
+
     }
 
     const changeCountMax = (e: ChangeEvent<HTMLInputElement>) => {
-        setCountMax(Number(e.currentTarget.value))
+        dispatch(setCountMax(Number(e.currentTarget.value)))
     }
 
     const changeCountStart = (e: ChangeEvent<HTMLInputElement>) => {
-        setCountStart(Number(e.currentTarget.value))
+        dispatch(setCountStart(Number(e.currentTarget.value)))
     }
 
     const increaseCount = () => {
-        setCount(count += 1)
+        dispatch(setCount(count += 1))
     }
 
     const resetCount = () => {
-        setCount(countStart)
+        dispatch(setCount(countStart))
     }
 
     const handleFocus = () => {
-
-        setMessageFocus("enter values and press 'set'")
+        dispatch(setMessageFocus("enter values and press 'set'"))
     }
 
     const handleBlur = () => {
-        setMessageFocus('')
+        dispatch(setMessageFocus(''))
     }
 
 
+    useEffect(() => {
+        // localStorage.setItem('countStart', JSON.stringify(countStart))
+        // localStorage.setItem('countMax', JSON.stringify(countMax))
+
+        // store.dispatch({ type: 'INCREMENT_START' });
+    }, [countStart])
 
     useEffect(() => {
-        localStorage.setItem('countStart', JSON.stringify(countStart))
-        localStorage.setItem('countMax', JSON.stringify(countMax))
-    }, [countStart, countMax])
+        // localStorage.setItem('countStart', JSON.stringify(countStart))
+        // localStorage.setItem('countMax', JSON.stringify(countMax))
+        // store.dispatch({ type: 'INCREMENT_MAX' });
+    }, [countMax])
 
 
     return (

@@ -17,9 +17,7 @@ const Display: React.FC<PropsType> = (
         messageFocus
     }
 ) => {
-    console.log('countStart, countMax', countStart, countMax)
-    console.log('handleFocus', messageFocus)
-    // console.log(' countMax < 0 || countStart < 0 || countMax <= countStart',  countMax < 0, countStart < 0, countMax <= countStart)
+
     return (
         <div className={styles.displayContainer}>
             {
